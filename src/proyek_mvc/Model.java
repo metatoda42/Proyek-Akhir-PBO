@@ -19,7 +19,7 @@ public class Model {
     public Model(){
         try{
             Class.forName(JDBC_DRIVER);
-            koneksi = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/responsi_perpus?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", "root", "");
+            koneksi = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/pbo_uap?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", "root", "");
             System.out.println("Koneksi Berhasil");
         }catch(Exception ex){
             JOptionPane.showMessageDialog(null, ex.getMessage());
