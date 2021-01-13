@@ -6,9 +6,13 @@ import java.awt.EventQueue;
 
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.GridLayout;
 import java.awt.TextArea;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.awt.Font;
 
 @SuppressWarnings("unused")
@@ -100,7 +104,7 @@ public class View extends JFrame {
     final TextArea tadeskripsigamebaru = new TextArea();
 
     
-	public View() {
+	public View(){
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		
 		framelogin.setTitle("Login");
@@ -115,6 +119,9 @@ public class View extends JFrame {
 	    panellogin.setBounds(0, 0, 467, 258);
 	  
 	    
+		
+		
+
 	    
 	    //THE TITLE/LOGIN FRAME
 	    
@@ -178,6 +185,19 @@ public class View extends JFrame {
 	    panelhome.add(jbaddnewhome);
 	    panelhome.add(jbexplorehome);
 	    
+	    /*BufferedImage myPicture;
+	    
+	     * TAMBAHIN GAMBAR DI PROGRAM WOYYYYY!!! BIAR TAMBAH KEREN!!!
+	     * 
+		try {
+			myPicture = ImageIO.read(new File("D:\\The Foundation\\Site 03 - Secondary R&D Site\\OOP\\Proyek Akhir\\image\\220728.jpg"));
+			JLabel picLabel = new JLabel(new ImageIcon(myPicture));
+			panelhome.add(picLabel);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	    */
 	    
 	    //Panel Explore
 	    dtm = new DefaultTableModel(namaKolom, 0);
@@ -228,6 +248,9 @@ public class View extends JFrame {
         paneladdnew.add(tadeskripsigamebaru);
 	    
 	}
+	
+	//GETTERS
+	
 	public String getUser(){
         return jtusername.getText();
     }
@@ -235,4 +258,5 @@ public class View extends JFrame {
 	public String getPass() {
 		return jtpassword.getText();
 	}
+	
 }
