@@ -8,6 +8,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.*;
 import java.awt.GridLayout;
+import java.awt.TextArea;
 import java.awt.Font;
 
 @SuppressWarnings("unused")
@@ -17,12 +18,22 @@ public class View extends JFrame {
 	JFrame framelogin = new JFrame();
 	JFrame framekonten = new JFrame();
 	JPanel panellogin = new JPanel();
-
+	JPanel panelhome = new JPanel();
     JPanel panelsidebar = new JPanel();
     JPanel panelexplore = new JPanel();
     JPanel panelprofil = new JPanel();
     JPanel panelpayment = new JPanel();
     JPanel paneladdnew = new JPanel();
+    JPanel panelsignin = new JPanel();
+    
+    //Panel Sign In
+    JLabel jlnama = new JLabel();
+    JLabel jlemail = new JLabel();
+    JLabel jlpasswordbaru = new JLabel();
+    JLabel jlusernamebaru = new JLabel();
+    JButton jbsignnew = new JButton();
+    JButton jbsignincancel = new JButton();
+    
     
     //Panel Login
     JLabel jltitle = new JLabel();
@@ -32,7 +43,13 @@ public class View extends JFrame {
     JPasswordField jtpassword = new JPasswordField();
     JButton jblogin = new JButton();
     JButton jbsignin = new JButton();
-
+    
+    //Panel Home
+    JLabel jlbanner = new JLabel();
+    JTextPane aboutus = new JTextPane();
+    JButton jbprofilhome = new JButton();
+    JButton jbaddnewhome = new JButton();
+    JButton jbexplorehome = new JButton();
     
     //Panel Explore
     JLabel jlhome = new JLabel();
@@ -40,8 +57,48 @@ public class View extends JFrame {
     JTable tabel;
     DefaultTableModel dtm;
     JScrollPane scrollPane;
-    Object namaKolom[] = {"Judul", "Harga", "Studio"};
+    Object namaKolom[] = {"Judul", "Harga", "Studio", "Genre"};
+    JButton details;
     
+    
+    //Panel Sidebar
+    JButton jbprofil = new JButton();
+    JButton jbaddnew = new JButton();
+    JButton jbhome = new JButton();
+    JButton jbexplore = new JButton();
+    
+    //Panel Profil
+    JTextPane jtabout = new JTextPane();
+    JLabel jlnamaprofil = new JLabel();
+    JLabel jlemailprofil = new JLabel();
+    JLabel jlgameprofil = new JLabel();
+    JTable tabelgame;
+    DefaultTableModel dtm2;
+    JScrollPane scrollPanegame;
+    Object namaKolom2[] = {"Judul", "Harga", "Studio", "Genre"};
+    
+    //Panel Payment
+    JTextPane jtgamedetails = new JTextPane();
+    JLabel jlnamagame = new JLabel();
+    JLabel jlhargagame = new JLabel();
+    JLabel jlgenregame = new JLabel();
+    JLabel jlstudiogame = new JLabel();
+    JButton jbbuygame = new JButton();
+    JButton jbaddwish = new JButton();
+    
+    //Panel Add New
+    JLabel jljudulgamebaru = new JLabel();
+    JLabel jlhargagamebaru = new JLabel();
+    JLabel jlgenregamebaru = new JLabel();
+    JLabel jlstudiogamebaru = new JLabel();
+    JLabel jldeskripsigamebaru = new JLabel();
+    
+    JTextPane jtjudulgamebaru = new JTextPane();
+    JTextPane jthargagamebaru = new JTextPane();
+    JTextPane jtgenregamebaru = new JTextPane();
+    JTextPane jtstudiogamebaru = new JTextPane();
+    final TextArea tadeskripsigamebaru = new TextArea();
+
     
 	public View() {
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -63,6 +120,9 @@ public class View extends JFrame {
 	    
 	    
 	   // framelogin.getContentPane().add(panellogin); (Jadikan Komen untuk Edit yang Lain)
+	   // framelogin.getContentPane().add(panelsignin);
+	    
+	    //Panel Login
 	    panellogin.setLayout(null);
 	    jltitle.setFont(new Font("Tahoma", Font.BOLD, 20));
 	    jltitle.setBounds(135, 29, 198, 42);
@@ -85,21 +145,40 @@ public class View extends JFrame {
 	    jbsignin.setBounds(1082, 0, 180, 749);
 	    panellogin.add(jbsignin);
 	    
+	    //Panel Sign In
+	    panelsignin.setLayout(null);
+	    
+	    panelsignin.add(jlnama);
+	    panelsignin.add(jlemail);
+	    panelsignin.add(jlpasswordbaru);
+	    panelsignin.add(jlusernamebaru);
+	    panelsignin.add(jbsignnew);
+	    panelsignin.add(jbsignincancel);
 	    
 	    //THE CONTENT FRAME
 
-	    framekonten.getContentPane().add(panelexplore);
+	    framekonten.getContentPane().add(panelexplore);//Jadikan komen kalo mau edit yang satunya
 	    framekonten.getContentPane().add(panelsidebar);
 	    framekonten.getContentPane().add(panelprofil);
 	    framekonten.getContentPane().add(panelpayment);
 	    framekonten.getContentPane().add(paneladdnew);
+	    framekonten.getContentPane().add(panelhome);
 
 	    panelexplore.setLayout(null);
 	    panelsidebar.setLayout(null);
 	    panelprofil.setLayout(null);
 	    panelpayment.setLayout(null);
 	    paneladdnew.setLayout(null);
+	    
+	    //Panel Home
 		
+	    panelhome.add(jlbanner);
+	    panelhome.add(aboutus);
+	    panelhome.add(jbprofilhome);
+	    panelhome.add(jbaddnewhome);
+	    panelhome.add(jbexplorehome);
+	    
+	    
 	    //Panel Explore
 	    dtm = new DefaultTableModel(namaKolom, 0);
 	    tabel = new JTable(dtm);
@@ -107,6 +186,46 @@ public class View extends JFrame {
         panelexplore.add(scrollPane);
         scrollPane.setBounds(10,40,343,360);
 	    
+        panelexplore.add(jlgreeting);
+        panelexplore.add(jlhome);
+        panelexplore.add(details);
+        
+        //Panel Sidebar
+        panelsidebar.add(jbhome);
+        panelsidebar.add(jbaddnew);
+        panelsidebar.add(jbexplore);
+        panelsidebar.add(jbprofil);
+        
+        //Panel Profil
+        panelprofil.add(jtabout);
+        panelprofil.add(jlemailprofil);
+        panelprofil.add(jlnamaprofil);
+        panelprofil.add(jlgameprofil);
+        dtm2 = new DefaultTableModel(namaKolom2, 0);
+	    tabelgame = new JTable(dtm2);
+        scrollPanegame = new JScrollPane(tabelgame);
+        
+        //Panel Payment
+        
+        panelpayment.add(jtgamedetails);
+        panelpayment.add(jlnamagame);
+        panelpayment.add(jlhargagame);
+        panelpayment.add(jlgenregame);
+        panelpayment.add(jbbuygame);
+        panelpayment.add(jbaddwish);
+        
+        //Panel Add New
+        
+        paneladdnew.add(jljudulgamebaru);
+        paneladdnew.add(jlhargagamebaru);
+        paneladdnew.add(jlgenregamebaru);
+        paneladdnew.add(jlstudiogamebaru);
+        paneladdnew.add(jldeskripsigamebaru);
+        paneladdnew.add(jtjudulgamebaru);
+        paneladdnew.add(jthargagamebaru);
+        paneladdnew.add(jtgenregamebaru);
+        paneladdnew.add(jtstudiogamebaru);
+        paneladdnew.add(tadeskripsigamebaru);
 	    
 	}
 	public String getUser(){
