@@ -35,6 +35,10 @@ public class View extends JFrame {
     JLabel jlemail = new JLabel();
     JLabel jlpasswordbaru = new JLabel();
     JLabel jlusernamebaru = new JLabel();
+    JTextField jtnama = new JTextField();
+    JTextField jtemail = new JTextField();
+    JPasswordField jtpasswordbaru = new JPasswordField();
+    JTextField jtusernamebaru = new JTextField();
     JButton jbsignnew = new JButton();
     JButton jbsignincancel = new JButton();
     
@@ -250,7 +254,17 @@ public class View extends JFrame {
 	}
 	
 	//GETTERS
-	
+	public String getNama() {
+        return jtnama.getText();
+    }
+        
+        public String getEmail(){
+        return jtemail.getText();
+        }
+
+        public String getUserbaru() {
+        return jtusernamebaru.getText();
+    }
 	public String getUser(){
         return jtusername.getText();
     }
@@ -258,5 +272,9 @@ public class View extends JFrame {
 	public String getPass() {
 		return jtpassword.getText();
 	}
+	@SuppressWarnings("deprecation")
+        public String getJtpasswordbaru() {
+        return jtpasswordbaru.getText();
+    }
 	
 }
