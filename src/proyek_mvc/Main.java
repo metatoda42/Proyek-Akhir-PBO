@@ -1,6 +1,6 @@
 package proyek_mvc;
 
-import proyek_mvc.MVC;
+
 
 /*
  * What if you, want to extract Final's Exam
