@@ -66,7 +66,7 @@ public class View extends JFrame {
     DefaultTableModel dtm;
     JScrollPane scrollPane;
     Object namaKolom[] = {"Judul", "Harga", "Studio", "Genre"};
-    JButton details;
+    JButton details = new JButton();
     
     
     //Panel Sidebar
@@ -119,7 +119,7 @@ public class View extends JFrame {
 	    framekonten.setTitle("UAP");
 	    framekonten.setVisible(false);
 	    framekonten.getContentPane().setLayout(null);
-	    framekonten.setSize(1280, 1024);
+	    framekonten.setSize(906, 788);
 	    panellogin.setBounds(0, 0, 467, 258);
 	  
 	    
@@ -169,24 +169,38 @@ public class View extends JFrame {
 	    //THE CONTENT FRAME
 
 	    framekonten.getContentPane().add(panelexplore);//Jadikan komen kalo mau edit yang satunya
+	    panelsidebar.setBounds(0, 0, 178, 749);
 	    framekonten.getContentPane().add(panelsidebar);
 	    framekonten.getContentPane().add(panelprofil);
 	    framekonten.getContentPane().add(panelpayment);
+	    paneladdnew.setBounds(178, 0, 718, 749);
 	    framekonten.getContentPane().add(paneladdnew);
-	    framekonten.getContentPane().add(panelhome);
+	    panelhome.setBounds(0, 0, 1264, 749);
+	    //framekonten.getContentPane().add(panelhome);//Selesai di setting, jadiin komen dulu biar gak overlap
 
 	    panelexplore.setLayout(null);
 	    panelsidebar.setLayout(null);
 	    panelprofil.setLayout(null);
 	    panelpayment.setLayout(null);
-	    paneladdnew.setLayout(null);
+	    panelhome.setLayout(null);
+	    jlbanner.setFont(new Font("Tahoma", Font.BOLD, 16));
+	    jlbanner.setBounds(524, 8, 163, 20);
+	    jlbanner.setText("WELCOME TO UAP");
 	    
 	    //Panel Home
 		
 	    panelhome.add(jlbanner);
+	    aboutus.setText("Dan ini adalah alasan mengapa Pandu Dhaulagiri bukan merupakan\r\nseorang Front End Programmer");
+	    aboutus.setBounds(352, 99, 561, 233);
 	    panelhome.add(aboutus);
+	    jbprofilhome.setText("PROFIL");
+	    jbprofilhome.setBounds(400, 65, 90, 23);
 	    panelhome.add(jbprofilhome);
+	    jbaddnewhome.setText("UPLOAD GAME");
+	    jbaddnewhome.setBounds(539, 65, 113, 23);
 	    panelhome.add(jbaddnewhome);
+	    jbexplorehome.setText("EXPLORE GAME");
+	    jbexplorehome.setBounds(695, 65, 107, 23);
 	    panelhome.add(jbexplorehome);
 	    
 	    /*BufferedImage myPicture;
@@ -237,18 +251,34 @@ public class View extends JFrame {
         panelpayment.add(jlgenregame);
         panelpayment.add(jbbuygame);
         panelpayment.add(jbaddwish);
+        paneladdnew.setLayout(null);
+        jljudulgamebaru.setText("Judul Game Baru");
+        jljudulgamebaru.setBounds(67, 54, 87, 20);
         
         //Panel Add New
         
         paneladdnew.add(jljudulgamebaru);
+        jlhargagamebaru.setText("Harga Game Baru");
+        jlhargagamebaru.setBounds(67, 85, 87, 20);
         paneladdnew.add(jlhargagamebaru);
+        jlgenregamebaru.setText("Genre Game Baru");
+        jlgenregamebaru.setBounds(67, 116, 87, 20);
         paneladdnew.add(jlgenregamebaru);
+        jlstudiogamebaru.setText("Studio Game Baru");
+        jlstudiogamebaru.setBounds(67, 147, 87, 20);
         paneladdnew.add(jlstudiogamebaru);
+        jldeskripsigamebaru.setText("Deskripsi Game Baru");
+        jldeskripsigamebaru.setBounds(67, 178, 97, 20);
         paneladdnew.add(jldeskripsigamebaru);
+        jtjudulgamebaru.setBounds(195, 54, 214, 20);
         paneladdnew.add(jtjudulgamebaru);
+        jthargagamebaru.setBounds(195, 85, 214, 20);
         paneladdnew.add(jthargagamebaru);
+        jtgenregamebaru.setBounds(195, 116, 214, 20);
         paneladdnew.add(jtgenregamebaru);
+        jtstudiogamebaru.setBounds(195, 147, 214, 20);
         paneladdnew.add(jtstudiogamebaru);
+        tadeskripsigamebaru.setBounds(195, 178, 214, 258);
         paneladdnew.add(tadeskripsigamebaru);
 	    
 	}
