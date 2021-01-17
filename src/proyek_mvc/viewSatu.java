@@ -20,7 +20,12 @@ import java.awt.event.ActionEvent;
 @SuppressWarnings("unused")
 public class viewSatu extends JFrame {
 
+
+
 	private static final long serialVersionUID = 1L;
+	
+	
+	
 	JFrame framelogin = new JFrame();
 	JFrame framekonten = new JFrame();
 	JPanel panellogin = new JPanel();
@@ -339,7 +344,7 @@ public class viewSatu extends JFrame {
         return jtnama.getText();
     }
         
-        public String getEmail(){
+    public String getEmail(){
         return jtemail.getText();
         }
 
