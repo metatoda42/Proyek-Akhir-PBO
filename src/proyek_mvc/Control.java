@@ -1,8 +1,18 @@
 package proyek_mvc;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JTable;
+
 import proyek_mvc.Model;
 import proyek_mvc.View;
 
+@SuppressWarnings("unused")
 public class Control {
 	int mastervariable=0;//HE IS THE CHOSEN ONE!!!
 	
@@ -12,6 +22,196 @@ public class Control {
 	public Control(View vpc, Model mpc) {
 		this.model = mpc;
         this.view = vpc;
+        
+        view.panellogin.setVisible(true);
+        view.panelhome.setVisible(false);
+        view.panelsidebar.setVisible(false);
+        view.panelexplore.setVisible(false);
+        view.panelprofil.setVisible(false);
+        view.panelpayment.setVisible(false);
+        view.paneladdnew.setVisible(false);
+        view.panelsignin.setVisible(false);
+        
+        
+        
+        //LOGIN
+        view.jblogin.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		boolean valid = false;
+        		String username = view.getUser();
+        		String password = view.getPass();
+        		if(view.getUser().equals("")||view.getPass().equals(""))JOptionPane.showMessageDialog(null, "Field Empty");
+        		else {
+        			String dataAnggota[][] = model.readLogin();
+            		for(int i =0 ; i<model.getBanyakuser();i++) {
+            			if(dataAnggota[i][0].equals(username)) {
+            				if(dataAnggota[i][1].equals(password)) {
+            					valid=true;
+            				}
+            			}
+            			System.out.print(dataAnggota[i][0]+" "+view.getUser());
+            			
+            		}
+            		if(valid == true) {
+            			view.framelogin.dispose();
+            			view.framekonten.setVisible(true);
+            			view.panelhome.setVisible(true);
+            		}
+            		else JOptionPane.showMessageDialog(null, "Wrong Password or Username");
+        		}
+        		
+        	}
+        });
+        view.jbsignnew.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		boolean valid =true;
+        		String username = view.getUserbaru();
+        		String password = view.getJtpasswordbaru();
+        		String email = view.getEmail();
+        		String nama = view.getNama();
+        		String dataAnggota[][] = model.readLogin();
+        		for(int i =0 ; i<model.getBanyakuser();i++) {
+        			if(dataAnggota[i][0].equals(username)) {
+        				valid=false;
+        			}
+        			System.out.print(dataAnggota[i][0]+" "+view.getUser());
+        			
+        		}
+        		if(view.getUserbaru().equals("")||view.getJtpasswordbaru().equals(""))JOptionPane.showMessageDialog(null, "Field Empty");
+        		else if(valid==false) JOptionPane.showMessageDialog(null, "Username Taken");
+        		else model.signin(username, password, nama, email);
+        	}
+        });
+        
+        view.jbsignincancel.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		view.panellogin.setVisible(true);
+        		view.panelsignin.setVisible(false);
+        		
+        		
+        	}
+        });
+        
+        view.jbsignin.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		view.panellogin.setVisible(false);
+        		view.panelsignin.setVisible(true);
+        	}
+        });
+        //HOME
+        view.jbprofilhome.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		view.panelprofil.setVisible(true);
+        		view.panelhome.setVisible(false);
+        		view.panelsidebar.setVisible(true);
+        	}
+        });
+        
+        view.jbaddnewhome.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		view.paneladdnew.setVisible(true);
+        		view.panelhome.setVisible(false);
+        		view.panelsidebar.setVisible(true);
+        	}
+        });
+        
+        view.jbexplorehome.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		view.panelexplore.setVisible(true);
+        		view.panelhome.setVisible(false);
+        		view.panelsidebar.setVisible(true);
+        		String dataGame[][] = model.readGame();
+                view.tabel.setModel(new JTable(dataGame, view.namaKolom).getModel());
+        	}
+        });
+        
+        //SIDEBAR
+        
+        view.jbhome.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		view.panelprofil.setVisible(false);
+        		view.panelhome.setVisible(true);
+        		view.panelsidebar.setVisible(false);
+        		view.panelexplore.setVisible(false);
+        		view.panelpayment.setVisible(false);
+        		view.paneladdnew.setVisible(false);
+        		
+        	}
+        });
+        
+        view.jbprofil.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		view.panelprofil.setVisible(true);
+        		view.panelhome.setVisible(false);
+        		view.panelsidebar.setVisible(true);
+        		view.panelexplore.setVisible(false);
+        		view.panelpayment.setVisible(false);
+        		view.paneladdnew.setVisible(false);
+        		
+        	}
+        });
+        
+        view.jbaddnew.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		view.panelprofil.setVisible(false);
+        		view.panelhome.setVisible(false);
+        		view.panelsidebar.setVisible(true);
+        		view.panelexplore.setVisible(false);
+        		view.panelpayment.setVisible(false);
+        		view.paneladdnew.setVisible(true);
+        	}
+        });
+        
+        view.jbexplore.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		view.panelprofil.setVisible(false);
+        		view.panelhome.setVisible(false);
+        		view.panelsidebar.setVisible(true);
+        		view.panelexplore.setVisible(true);
+        		view.panelpayment.setVisible(false);
+        		view.paneladdnew.setVisible(false);
+        		
+        		String dataGame[][] = model.readGame();
+                view.tabel.setModel(new JTable(dataGame, view.namaKolom).getModel());
+        	}
+        });
+        //EXPLORE
+        view.tabel.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mousePressed(e);
+                mastervariable=0;
+                view.jbdetails.setEnabled(true);
+                
+                view.jbdetails.addActionListener(new ActionListener() {
+                	int baris = view.tabel.getSelectedRow();
+                    String dataterpilih = view.tabel.getValueAt(baris, 0).toString();
+                	public void actionPerformed(ActionEvent e) {
+                		if(mastervariable!=1)model.detail(dataterpilih);
+            			mastervariable=1;
+            			String dataGame[][] = view.read();
+                        view.tabel.setModel(new JTable(dataAnggota, viewresponsi.namaKolom).getModel());
+                        view.jbhapus.setEnabled(false);
+                        view.jbedit.setEnabled(false);
+                        //
+                        
+                	}
+                });
+               
+                
+                
+            }
+        }
+        );
+        
+        //PROFIL
+        
+        //PAYMENT
+        
+        //ADD NEW
+        
+        //SIGN IN
+        
 	}
 
 }

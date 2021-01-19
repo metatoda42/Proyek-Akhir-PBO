@@ -9,17 +9,7 @@ import java.sql.Statement;
 import javax.swing.JOptionPane;
 
 
-/* OI MOONA!!!
- * YES SACHOU??
- * sorry, wifi broke
- * ok
- * 
- * Come on Moona! GitHub Fix!
- * 
- * =========
- * 
- * 
- * 
+/* 
  * 
  * 
  * */
@@ -48,10 +38,11 @@ public class Model {
     public void signin(String username, String password, String name, String email){
     	int jmlData=0;
         try {
+        	
            
            
-           String query = "Select * from user WHERE username=" + username; 
-           
+           String query = "Select * from user WHERE username='" + username+"'"; 
+           System.out.println(query);
            ResultSet resultSet = statement.executeQuery(query);
            
            while (resultSet.next()){ 
@@ -249,7 +240,7 @@ public class Model {
            while (resultSet.next()){ 
                 jmlData++;
             }
-           
+         
              if (jmlData==1) {
                 query = "UPDATE game SET judul='" + judul + "', genre='" + genre +"', studio='" + studio + "', description='" + description + "' WHERE username=" + judul;
                 statement = (Statement) koneksi.createStatement();

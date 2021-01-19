@@ -14,11 +14,18 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.awt.Font;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 @SuppressWarnings("unused")
 public class View extends JFrame {
 
+
+
 	private static final long serialVersionUID = 1L;
+	
+	
+	
 	JFrame framelogin = new JFrame();
 	JFrame framekonten = new JFrame();
 	JPanel panellogin = new JPanel();
@@ -26,7 +33,7 @@ public class View extends JFrame {
     JPanel panelsidebar = new JPanel();
     JPanel panelexplore = new JPanel();
     JPanel panelprofil = new JPanel();
-    JPanel panelpayment = new JPanel();
+    JPanel panelpayment =  new JPanel();
     JPanel paneladdnew = new JPanel();
     JPanel panelsignin = new JPanel();
     
@@ -54,6 +61,10 @@ public class View extends JFrame {
     
     //Panel Home
     JLabel jlbanner = new JLabel();
+    JLabel jlbanner2 = new JLabel();
+    JLabel jlgambar = new JLabel();
+    JLabel jlgambar2 = new JLabel();
+    JLabel jlgambar3 = new JLabel();
     JTextPane aboutus = new JTextPane();
     JButton jbprofilhome = new JButton();
     JButton jbaddnewhome = new JButton();
@@ -66,10 +77,11 @@ public class View extends JFrame {
     DefaultTableModel dtm;
     JScrollPane scrollPane;
     Object namaKolom[] = {"Judul", "Harga", "Studio", "Genre"};
-    JButton details = new JButton();
+    JButton jbdetails = new JButton();
     
     
     //Panel Sidebar
+    JTextPane jttitle = new JTextPane();
     JButton jbprofil = new JButton();
     JButton jbaddnew = new JButton();
     JButton jbhome = new JButton();
@@ -84,6 +96,7 @@ public class View extends JFrame {
     DefaultTableModel dtm2;
     JScrollPane scrollPanegame;
     Object namaKolom2[] = {"Judul", "Harga", "Studio", "Genre"};
+    
     
     //Panel Payment
     JTextPane jtgamedetails = new JTextPane();
@@ -115,12 +128,14 @@ public class View extends JFrame {
         framelogin.setVisible(true);
         framelogin.getContentPane().setLayout(null);
         framelogin.setSize(483, 297);
+        panellogin.setBounds(0, 0, 467, 258);
+	    panelsignin.setBounds(0, 0, 467, 258);
         
 	    framekonten.setTitle("UAP");
 	    framekonten.setVisible(false);
 	    framekonten.getContentPane().setLayout(null);
-	    framekonten.setSize(906, 788);
-	    panellogin.setBounds(0, 0, 467, 258);
+	    framekonten.setSize(744, 639);
+	    
 	  
 	    
 		
@@ -130,8 +145,8 @@ public class View extends JFrame {
 	    //THE TITLE/LOGIN FRAME
 	    
 	    
-	   // framelogin.getContentPane().add(panellogin); (Jadikan Komen untuk Edit yang Lain)
-	   // framelogin.getContentPane().add(panelsignin);
+	    framelogin.getContentPane().add(panellogin);// (Jadikan Komen untuk Edit yang Lain)
+	    framelogin.getContentPane().add(panelsignin);
 	    
 	    //Panel Login
 	    panellogin.setLayout(null);
@@ -151,56 +166,103 @@ public class View extends JFrame {
 	    panellogin.add(jtusername);
 	    jtpassword.setBounds(145, 124, 180, 29);
 	    panellogin.add(jtpassword);
-	    jblogin.setBounds(902, 0, 180, 749);
+	    jblogin.setText("LOGIN\r\n");
+	    jblogin.setBounds(145, 176, 84, 29);
 	    panellogin.add(jblogin);
-	    jbsignin.setBounds(1082, 0, 180, 749);
+	    jbsignin.setText("REGISTER");
+	    jbsignin.setBounds(232, 176, 93, 29);
 	    panellogin.add(jbsignin);
 	    
 	    //Panel Sign In
 	    panelsignin.setLayout(null);
+	    jlnama.setText("Nama: ");
+	    jlnama.setBounds(105, 48, 49, 15);
 	    
 	    panelsignin.add(jlnama);
+	    jlemail.setBounds(105, 82, 49, 15);
+	    jlemail.setText("Email: ");
 	    panelsignin.add(jlemail);
+	    jlpasswordbaru.setText("Password");
+	    jlpasswordbaru.setBounds(79, 156, 75, 15);
 	    panelsignin.add(jlpasswordbaru);
+	    jlusernamebaru.setBounds(79, 119, 75, 15);
+	    jlusernamebaru.setText("Username");
 	    panelsignin.add(jlusernamebaru);
+	    jbsignnew.setText("Sign In");
+	    jbsignnew.setBounds(162, 192, 75, 26);
 	    panelsignin.add(jbsignnew);
+	    jbsignincancel.setText("Login");
+	    jbsignincancel.setBounds(236, 192, 67, 26);
 	    panelsignin.add(jbsignincancel);
+	    panelsignin.add(jtnama);
+	    panelsignin.add(jtemail);
+	    panelsignin.add(jtpasswordbaru);
+	    panelsignin.add(jtusernamebaru);
+	    jtnama.setBounds(163, 42, 140, 26);
+	    
+	    jtemail.setBounds(164, 76, 140, 26);
+	    
+	    jtpasswordbaru.setBounds(163, 150, 140, 26);
+	    
+	    jtusernamebaru.setBounds(163, 113, 140, 26);
+	    
+	    panelexplore.setBounds(210, 10, 520, 592);
+	    panelsidebar.setBackground(new Color(0, 102, 153));
+	    panelsidebar.setBounds(0, 0, 198, 602);
+	    
 	    
 	    //THE CONTENT FRAME
-
+	    //ON OFF ON OFF ON OFF ON OFF ON OFF ON OFF
 	    framekonten.getContentPane().add(panelexplore);//Jadikan komen kalo mau edit yang satunya
-	    panelsidebar.setBounds(0, 0, 178, 749);
 	    framekonten.getContentPane().add(panelsidebar);
+	    panelprofil.setBackground(new Color(0, 102, 153));
+	    panelprofil.setBounds(197, 0, 546, 592);
 	    framekonten.getContentPane().add(panelprofil);
-	    framekonten.getContentPane().add(panelpayment);
-	    paneladdnew.setBounds(178, 0, 718, 749);
+	    panelhome.setBackground(new Color(0, 102, 153));
+	    panelhome.setBounds(0, 0, 730, 602);
+	    paneladdnew.setBounds(210, 0, 518, 602);
 	    framekonten.getContentPane().add(paneladdnew);
-	    panelhome.setBounds(0, 0, 1264, 749);
-	    //framekonten.getContentPane().add(panelhome);//Selesai di setting, jadiin komen dulu biar gak overlap
+	    framekonten.getContentPane().add(panelhome);
 
 	    panelexplore.setLayout(null);
 	    panelsidebar.setLayout(null);
 	    panelprofil.setLayout(null);
-	    panelpayment.setLayout(null);
+	    paneladdnew.setLayout(null);
 	    panelhome.setLayout(null);
-	    jlbanner.setFont(new Font("Tahoma", Font.BOLD, 16));
-	    jlbanner.setBounds(524, 8, 163, 20);
-	    jlbanner.setText("WELCOME TO UAP");
+	    jlbanner.setFont(new Font("Lato Black", Font.PLAIN, 40));
+	    jlbanner.setText("STEAM");
+	    jlbanner.setBounds(29, 61, 142, 56);
 	    
 	    //Panel Home
 		
 	    panelhome.add(jlbanner);
-	    aboutus.setText("Dan ini adalah alasan mengapa Pandu Dhaulagiri bukan merupakan\r\nseorang Front End Programmer");
-	    aboutus.setBounds(352, 99, 561, 233);
+	    jlbanner2.setText("your first-choice game store");
+	    jlbanner2.setFont(new Font("Lato", Font.ITALIC, 12));
+	    jlbanner2.setBounds(29, 112, 190, 19);
+	    panelhome.add(jlbanner2);
+	    aboutus.setBounds(29, 271, 680, 143);
+	    jlgambar.setHorizontalAlignment(SwingConstants.CENTER);
+	    jlgambar.setText("GAMBAR 1");
+	    jlgambar.setBackground(new Color(102, 204, 102));
+	    jlgambar.setBounds(29, 152, 202, 99);
+	    panelhome.add(jlgambar);
+	    jlgambar2.setText("GAMBAR 2");
+	    jlgambar2.setHorizontalAlignment(SwingConstants.CENTER);
+	    jlgambar2.setBounds(260, 152, 214, 99);
+	    panelhome.add(jlgambar2);
+	    jlgambar3.setText("GAMBAR 3");
+	    jlgambar3.setHorizontalAlignment(SwingConstants.CENTER);
+	    jlgambar3.setBounds(495, 152, 214, 99);
+	    panelhome.add(jlgambar3);
 	    panelhome.add(aboutus);
-	    jbprofilhome.setText("PROFIL");
-	    jbprofilhome.setBounds(400, 65, 90, 23);
+	    jbprofilhome.setText("Profile\r\n");
+	    jbprofilhome.setBounds(601, 10, 108, 34);
 	    panelhome.add(jbprofilhome);
-	    jbaddnewhome.setText("UPLOAD GAME");
-	    jbaddnewhome.setBounds(539, 65, 113, 23);
+	    jbaddnewhome.setText("Add Game");
+	    jbaddnewhome.setBounds(467, 10, 116, 34);
 	    panelhome.add(jbaddnewhome);
-	    jbexplorehome.setText("EXPLORE GAME");
-	    jbexplorehome.setBounds(695, 65, 107, 23);
+	    jbexplorehome.setText("Explore");
+	    jbexplorehome.setBounds(341, 10, 116, 34);
 	    panelhome.add(jbexplorehome);
 	    
 	    /*BufferedImage myPicture;
@@ -222,26 +284,102 @@ public class View extends JFrame {
 	    tabel = new JTable(dtm);
         scrollPane = new JScrollPane(tabel);
         panelexplore.add(scrollPane);
-        scrollPane.setBounds(10,40,343,360);
+        scrollPane.setBounds(54,70,444,336);
+        jlgreeting.setText("WELCOME!!!");
+        jlgreeting.setFont(new Font("Tahoma", Font.BOLD, 17));
+        jlgreeting.setBounds(219, 22, 209, 37);
 	    
         panelexplore.add(jlgreeting);
+        jlhome.setText("PLACE IMAGE HERE!!!");
+        jlhome.setBounds(75, 461, 403, 85);
         panelexplore.add(jlhome);
-        panelexplore.add(details);
+        jbdetails.setText("DETAILS");
+        jbdetails.setBounds(96, 417, 102, 33);
+        panelexplore.add(jbdetails);
+        jbhome.setFont(new Font("Lato Black", Font.PLAIN, 15));
+        jbhome.setText("Home");
+        jbhome.setBounds(10, 106, 170, 76);
+        jttitle.setForeground(new Color(255, 255, 255));
+        jttitle.setBackground(new Color(0, 102, 153));
+        jttitle.setText("     STEAM\r\n");
+        jttitle.setFont(new Font("Lato Black", Font.BOLD, 30));
+        jttitle.setBounds(10, 24, 170, 43);
         
         //Panel Sidebar
+        panelsidebar.add(jttitle);
         panelsidebar.add(jbhome);
+        jbaddnew.setFont(new Font("Lato Black", Font.PLAIN, 15));
+        jbaddnew.setText("Add Game");
+        jbaddnew.setBounds(10, 207, 170, 76);
         panelsidebar.add(jbaddnew);
+        jbexplore.setFont(new Font("Lato Black", Font.PLAIN, 15));
+        jbexplore.setText("Explore");
+        jbexplore.setBounds(10, 315, 170, 76);
         panelsidebar.add(jbexplore);
+        jbprofil.setFont(new Font("Lato Black", Font.PLAIN, 15));
+        jbprofil.setText("Profile");
+        jbprofil.setBounds(10, 422, 170, 76);
         panelsidebar.add(jbprofil);
+        jtabout.setForeground(new Color(255, 255, 255));
+        jtabout.setText("Deskripsi\r\n\r\nDeskripsi");
+        jtabout.setFont(new Font("Lato", Font.BOLD, 16));
+        jtabout.setBackground(new Color(0, 51, 0));
+        jtabout.setBounds(47, 103, 429, 180);
         
         //Panel Profil
         panelprofil.add(jtabout);
+        jlemailprofil.setFont(new Font("Lato Thin", Font.PLAIN, 13));
+        jlemailprofil.setText("email@gmail.com\r\n\r\n");
+        jlemailprofil.setForeground(new Color(0, 0, 0));
+        jlemailprofil.setBounds(47, 71, 192, 29);
         panelprofil.add(jlemailprofil);
+        jlnamaprofil.setFont(new Font("Lato", Font.BOLD, 30));
+        jlnamaprofil.setText("Hello, nama\r\n");
+        jlnamaprofil.setBounds(47, 29, 283, 51);
         panelprofil.add(jlnamaprofil);
+        jlgameprofil.setText("YOUR GAME LIBRARIES");
+        jlgameprofil.setFont(new Font("Lato Black", Font.PLAIN, 17));
+        jlgameprofil.setBounds(162, 293, 192, 35);
         panelprofil.add(jlgameprofil);
         dtm2 = new DefaultTableModel(namaKolom2, 0);
 	    tabelgame = new JTable(dtm2);
         scrollPanegame = new JScrollPane(tabelgame);
+        
+        //Panel Add New
+        jlhargagamebaru.setFont(new Font("Tahoma", Font.BOLD, 17));
+        jlhargagamebaru.setText("HARGA");
+        jlhargagamebaru.setBounds(10, 47, 92, 32);
+        paneladdnew.add(jlhargagamebaru);
+        jlgenregamebaru.setText("GENRE");
+        jlgenregamebaru.setFont(new Font("Tahoma", Font.BOLD, 17));
+        jlgenregamebaru.setBounds(10, 85, 92, 32);
+        paneladdnew.add(jlgenregamebaru);
+        jlstudiogamebaru.setFont(new Font("Tahoma", Font.BOLD, 17));
+        jlstudiogamebaru.setText("STUDIO");
+        jlstudiogamebaru.setBounds(10, 121, 92, 32);
+        paneladdnew.add(jlstudiogamebaru);
+        jldeskripsigamebaru.setText("DESKRIPSI");
+        jldeskripsigamebaru.setBounds(10, 175, 110, 32);
+        jldeskripsigamebaru.setFont(new Font("Tahoma", Font.BOLD, 17));
+        paneladdnew.add(jldeskripsigamebaru);
+        jtjudulgamebaru.setBounds(95, 16, 141, 20);
+        paneladdnew.add(jtjudulgamebaru);
+        jthargagamebaru.setBounds(95, 59, 151, 20);
+        paneladdnew.add(jthargagamebaru);
+        jtgenregamebaru.setBounds(95, 90, 151, 20);
+        paneladdnew.add(jtgenregamebaru);
+        jtstudiogamebaru.setBounds(95, 128, 141, 20);
+        paneladdnew.add(jtstudiogamebaru);
+        tadeskripsigamebaru.setBounds(126, 187, 382, 357);
+        paneladdnew.add(tadeskripsigamebaru);
+        jljudulgamebaru.setFont(new Font("Tahoma", Font.BOLD, 17));
+        jljudulgamebaru.setText("JUDUL");
+        jljudulgamebaru.setBounds(10, 11, 127, 32);
+        paneladdnew.add(jljudulgamebaru);
+        panelpayment.setBounds(197, 0, 520, 592);
+        framekonten.getContentPane().add(panelpayment);
+        panelpayment.setLayout(null);
+        
         
         //Panel Payment
         
@@ -251,35 +389,6 @@ public class View extends JFrame {
         panelpayment.add(jlgenregame);
         panelpayment.add(jbbuygame);
         panelpayment.add(jbaddwish);
-        paneladdnew.setLayout(null);
-        jljudulgamebaru.setText("Judul Game Baru");
-        jljudulgamebaru.setBounds(67, 54, 87, 20);
-        
-        //Panel Add New
-        
-        paneladdnew.add(jljudulgamebaru);
-        jlhargagamebaru.setText("Harga Game Baru");
-        jlhargagamebaru.setBounds(67, 85, 87, 20);
-        paneladdnew.add(jlhargagamebaru);
-        jlgenregamebaru.setText("Genre Game Baru");
-        jlgenregamebaru.setBounds(67, 116, 87, 20);
-        paneladdnew.add(jlgenregamebaru);
-        jlstudiogamebaru.setText("Studio Game Baru");
-        jlstudiogamebaru.setBounds(67, 147, 87, 20);
-        paneladdnew.add(jlstudiogamebaru);
-        jldeskripsigamebaru.setText("Deskripsi Game Baru");
-        jldeskripsigamebaru.setBounds(67, 178, 97, 20);
-        paneladdnew.add(jldeskripsigamebaru);
-        jtjudulgamebaru.setBounds(195, 54, 214, 20);
-        paneladdnew.add(jtjudulgamebaru);
-        jthargagamebaru.setBounds(195, 85, 214, 20);
-        paneladdnew.add(jthargagamebaru);
-        jtgenregamebaru.setBounds(195, 116, 214, 20);
-        paneladdnew.add(jtgenregamebaru);
-        jtstudiogamebaru.setBounds(195, 147, 214, 20);
-        paneladdnew.add(jtstudiogamebaru);
-        tadeskripsigamebaru.setBounds(195, 178, 214, 258);
-        paneladdnew.add(tadeskripsigamebaru);
 	    
 	}
 	
@@ -288,11 +397,11 @@ public class View extends JFrame {
         return jtnama.getText();
     }
         
-        public String getEmail(){
+    public String getEmail(){
         return jtemail.getText();
         }
 
-        public String getUserbaru() {
+    public String getUserbaru() {
         return jtusernamebaru.getText();
     }
 	public String getUser(){
