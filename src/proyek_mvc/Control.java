@@ -104,6 +104,16 @@ public class Control {
         		view.panelprofil.setVisible(true);
         		view.panelhome.setVisible(false);
         		view.panelsidebar.setVisible(true);
+        		view.panelexplore.setVisible(false);
+        		view.panelpayment.setVisible(false);
+        		view.paneladdnew.setVisible(false);
+        		String dataUser[][] = model.readUser();
+        		view.jlnamaprofil.setText(dataUser[0][2]);
+        		view.jlemailprofil.setText(dataUser[0][3]);
+        		view.jtabout.setText(dataUser[0][4]);
+        		
+                
+        		
         	}
         });
         
@@ -147,6 +157,12 @@ public class Control {
         		view.panelexplore.setVisible(false);
         		view.panelpayment.setVisible(false);
         		view.paneladdnew.setVisible(false);
+        		String dataUser[][] = model.readUser();
+        		view.jlnamaprofil.setText(dataUser[0][2]);
+        		view.jlemailprofil.setText(dataUser[0][3]);
+        		view.jtabout.setText(dataUser[0][4]);
+        		
+                
         		
         	}
         });
@@ -180,20 +196,17 @@ public class Control {
             @Override
             public void mouseClicked(MouseEvent e) {
                 super.mousePressed(e);
-                mastervariable=0;
+                
                 view.jbdetails.setEnabled(true);
                 
                 view.jbdetails.addActionListener(new ActionListener() {
                 	int baris = view.tabel.getSelectedRow();
                     String dataterpilih = view.tabel.getValueAt(baris, 0).toString();
                 	public void actionPerformed(ActionEvent e) {
-                		if(mastervariable!=1)model.detail(dataterpilih);
-            			mastervariable=1;
-            			String dataGame[][] = view.read();
-                        view.tabel.setModel(new JTable(dataAnggota, viewresponsi.namaKolom).getModel());
-                        view.jbhapus.setEnabled(false);
-                        view.jbedit.setEnabled(false);
-                        //
+             
+            			String dataGame[][] = model.readGame();
+                        //Nah, disini masukin array dataGame kedalam jlabel dkk. Tapi sebelum itu, harus
+            			//nunggu altra dengan front end.
                         
                 	}
                 });
@@ -205,13 +218,44 @@ public class Control {
         );
         
         //PROFIL
-        
+        view.jbeditabout.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		 view.jtabout.setEditable(true);
+        	}
+        });
+
+        view.jbsaveabout.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		String username=view.getUser();
+        		String about = view.getAboutuser();
+        		model.updateAbout(about, username);
+        		view.jtabout.setEditable(false);
+        	}
+        });
         //PAYMENT
         
-        //ADD NEW
-        
-        //SIGN IN
-        
+        //ADD NEW//masih kurang handling harga
+        view.jbnewgame.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		boolean valid =true;
+        		String judul = view.getJudulGame();
+        		//int harga = view.getHargaGame();
+        		String genre = view.getGenreGame();
+        		String studio = view.getStudioGame();
+        		String description = view.getDeskripsi();
+        		String dataGame[][] = model.readGame();
+        		for(int i =0 ; i<model.getBanyakgame();i++) {
+        			if(dataGame[i][0].equals(view.getJudulGame())) {
+        				valid=false;
+        			}
+        			System.out.print(dataGame[i][0]+" "+view.getUser());
+        			
+        		}
+        		if(view.getUserbaru().equals("")||view.getJtpasswordbaru().equals(""))JOptionPane.showMessageDialog(null, "Field Empty");
+        		else if(valid==false) JOptionPane.showMessageDialog(null, "Username Taken");
+        		else model.addgame(judul, 0, genre, studio, description);
+        	}
+        });
 	}
 
 }

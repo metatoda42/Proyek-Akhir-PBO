@@ -199,6 +199,30 @@ public class Model {
     	}
     }
     
+    public String[][] readGameDetail(){
+    	try {
+    		int jmlData = 0;
+            
+            String data[][] = new String[getBanyakgame()][5];
+            
+            String query = "Select * from game"; 
+            ResultSet resultSet = statement.executeQuery(query);
+            while (resultSet.next()){
+                data[jmlData][0] = resultSet.getString("judul"); //harus sesuai nama kolom di mysql
+                data[jmlData][1] = resultSet.getString("harga");             
+                data[jmlData][2] = resultSet.getString("genre");
+                data[jmlData][3] = resultSet.getString("studio");
+                data[jmlData][4] = resultSet.getString("description");
+                jmlData++;
+            }return data;
+    	}
+    	catch(SQLException e){
+    		System.out.println(e.getMessage());
+            System.out.println("SQL Error");
+            return null;
+    	}
+    }
+    
     
     
     
@@ -216,6 +240,33 @@ public class Model {
            
              if (jmlData==1) {
                 query = "UPDATE user SET username='" + username + "', password='" + password +"', nama='" + nama + "', email='" + email + "', about='" + about + "' WHERE username=" + username;
+                statement = (Statement) koneksi.createStatement();
+                statement.executeUpdate(query); //execute querynya
+                System.out.println("Berhasil diupdate");
+                JOptionPane.showMessageDialog(null, "Data Berhasil diupdate");
+             }
+             else {
+                 JOptionPane.showMessageDialog(null, "Data Tidak Ada");
+             }
+           
+        } catch (Exception sql) {
+            System.out.println(sql.getMessage());   
+            JOptionPane.showMessageDialog(null, sql.getMessage());
+        }
+    }
+    
+    public void updateAbout(String about, String username){
+        int jmlData=0;
+         try {
+           String query = "Select * from user WHERE username='" + username+"'"; 
+           ResultSet resultSet = statement.executeQuery(query);
+           
+           while (resultSet.next()){ 
+                jmlData++;
+            }
+           
+             if (jmlData==1) {
+                query = "UPDATE user SET about='" + about + "' WHERE username='" + username+"'";
                 statement = (Statement) koneksi.createStatement();
                 statement.executeUpdate(query); //execute querynya
                 System.out.println("Berhasil diupdate");

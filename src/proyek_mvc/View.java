@@ -93,10 +93,11 @@ public class View extends JFrame {
     JLabel jlemailprofil = new JLabel();
     JLabel jlgameprofil = new JLabel();
     JTable tabelgame;
+    JButton jbeditabout = new JButton();
     DefaultTableModel dtm2;
     JScrollPane scrollPanegame;
     Object namaKolom2[] = {"Judul", "Harga", "Studio", "Genre"};
-    
+    JButton jbsaveabout = new JButton();
     
     //Panel Payment
     JTextPane jtgamedetails = new JTextPane();
@@ -119,6 +120,7 @@ public class View extends JFrame {
     JTextPane jtgenregamebaru = new JTextPane();
     JTextPane jtstudiogamebaru = new JTextPane();
     final TextArea tadeskripsigamebaru = new TextArea();
+    JButton jbnewgame = new JButton();
 
     
 	public View(){
@@ -320,8 +322,8 @@ public class View extends JFrame {
         jbprofil.setText("Profile");
         jbprofil.setBounds(10, 422, 170, 76);
         panelsidebar.add(jbprofil);
+        jtabout.setEditable(false);
         jtabout.setForeground(new Color(255, 255, 255));
-        jtabout.setText("Deskripsi\r\n\r\nDeskripsi");
         jtabout.setFont(new Font("Lato", Font.BOLD, 16));
         jtabout.setBackground(new Color(0, 51, 0));
         jtabout.setBounds(47, 103, 429, 180);
@@ -344,6 +346,15 @@ public class View extends JFrame {
         dtm2 = new DefaultTableModel(namaKolom2, 0);
 	    tabelgame = new JTable(dtm2);
         scrollPanegame = new JScrollPane(tabelgame);
+        scrollPanegame.setBounds(47, 324, 445, 257);
+        panelprofil.add(scrollPanegame);
+        jbeditabout.setText("Edit");
+        jbeditabout.setBounds(427, 11, 94, 29);
+        panelprofil.add(jbeditabout);
+        jbsaveabout.setText("Save");
+        jbsaveabout.setBounds(427, 51, 94, 29);
+        panelprofil.add(jbsaveabout);
+        
         
         //Panel Add New
         jlhargagamebaru.setFont(new Font("Tahoma", Font.BOLD, 17));
@@ -381,6 +392,7 @@ public class View extends JFrame {
         panelpayment.setLayout(null);
         
         
+        
         //Panel Payment
         
         panelpayment.add(jtgamedetails);
@@ -415,5 +427,28 @@ public class View extends JFrame {
         public String getJtpasswordbaru() {
         return jtpasswordbaru.getText();
     }
+	
+	public String getJudulGame(){
+		return jtjudulgamebaru.getText();
+	}
+	
+	public String getAboutuser() {
+		return jtabout.getText();
+	}
+	/*public int getHargaGame(){
+		String rice= jthargagamebaru.getText();
+		return rice; //Note, convert to int later once you figure it out.
+	}*/
+	
+	public String getGenreGame() {
+		return jtgenregamebaru.getText();
+	}
+	public String getStudioGame() {
+		return jtstudiogamebaru.getText();
+	}
+	public String getDeskripsi() {
+		return tadeskripsigamebaru.getText();
+	}
+
 	
 }
