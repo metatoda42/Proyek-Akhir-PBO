@@ -233,7 +233,19 @@ public class Control {
         	}
         });
         //PAYMENT
+        view.jbbuygame.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		
+        		
+        	}
+        });
         
+        view.jbaddwish.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		
+        		
+        	}
+        });
         //ADD NEW//masih kurang handling harga
         view.jbnewgame.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {

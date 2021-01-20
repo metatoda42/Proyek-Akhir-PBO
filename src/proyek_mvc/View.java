@@ -207,8 +207,9 @@ public class View extends JFrame {
 	    jtpasswordbaru.setBounds(163, 150, 140, 26);
 	    
 	    jtusernamebaru.setBounds(163, 113, 140, 26);
+	    panelexplore.setBackground(new Color(0, 102, 153));
 	    
-	    panelexplore.setBounds(210, 10, 520, 592);
+	    panelexplore.setBounds(197, 0, 533, 602);
 	    panelsidebar.setBackground(new Color(0, 102, 153));
 	    panelsidebar.setBounds(0, 0, 198, 602);
 	    
@@ -222,9 +223,12 @@ public class View extends JFrame {
 	    framekonten.getContentPane().add(panelprofil);
 	    panelhome.setBackground(new Color(0, 102, 153));
 	    panelhome.setBounds(0, 0, 730, 602);
+	    paneladdnew.setBackground(new Color(0, 102, 153));
 	    paneladdnew.setBounds(210, 0, 518, 602);
+	    panelpayment.setBackground(new Color(0, 102, 153));
 	    framekonten.getContentPane().add(paneladdnew);
 	    framekonten.getContentPane().add(panelhome);
+	    framekonten.getContentPane().add(panelpayment);
 
 	    panelexplore.setLayout(null);
 	    panelsidebar.setLayout(null);
@@ -286,17 +290,18 @@ public class View extends JFrame {
 	    tabel = new JTable(dtm);
         scrollPane = new JScrollPane(tabel);
         panelexplore.add(scrollPane);
-        scrollPane.setBounds(54,70,444,336);
-        jlgreeting.setText("WELCOME!!!");
-        jlgreeting.setFont(new Font("Tahoma", Font.BOLD, 17));
-        jlgreeting.setBounds(219, 22, 209, 37);
+        scrollPane.setBounds(23,70,475,336);
+        jlgreeting.setHorizontalAlignment(SwingConstants.CENTER);
+        jlgreeting.setText("Welcome to Steam");
+        jlgreeting.setFont(new Font("Bebas Neue Bold", Font.BOLD, 26));
+        jlgreeting.setBounds(23, 22, 475, 37);
 	    
         panelexplore.add(jlgreeting);
         jlhome.setText("PLACE IMAGE HERE!!!");
-        jlhome.setBounds(75, 461, 403, 85);
+        jlhome.setBounds(23, 461, 455, 102);
         panelexplore.add(jlhome);
         jbdetails.setText("DETAILS");
-        jbdetails.setBounds(96, 417, 102, 33);
+        jbdetails.setBounds(33, 416, 102, 33);
         panelexplore.add(jbdetails);
         jbhome.setFont(new Font("Lato Black", Font.PLAIN, 15));
         jbhome.setText("Home");
@@ -357,37 +362,37 @@ public class View extends JFrame {
         
         
         //Panel Add New
-        jlhargagamebaru.setFont(new Font("Tahoma", Font.BOLD, 17));
+        jlhargagamebaru.setFont(new Font("Lato Black", Font.BOLD, 17));
         jlhargagamebaru.setText("HARGA");
-        jlhargagamebaru.setBounds(10, 47, 92, 32);
+        jlhargagamebaru.setBounds(10, 46, 92, 45);
         paneladdnew.add(jlhargagamebaru);
         jlgenregamebaru.setText("GENRE");
-        jlgenregamebaru.setFont(new Font("Tahoma", Font.BOLD, 17));
+        jlgenregamebaru.setFont(new Font("Lato Black", Font.BOLD, 17));
         jlgenregamebaru.setBounds(10, 85, 92, 32);
         paneladdnew.add(jlgenregamebaru);
-        jlstudiogamebaru.setFont(new Font("Tahoma", Font.BOLD, 17));
+        jlstudiogamebaru.setFont(new Font("Lato Black", Font.BOLD, 17));
         jlstudiogamebaru.setText("STUDIO");
         jlstudiogamebaru.setBounds(10, 121, 92, 32);
         paneladdnew.add(jlstudiogamebaru);
-        jldeskripsigamebaru.setText("DESKRIPSI");
-        jldeskripsigamebaru.setBounds(10, 175, 110, 32);
-        jldeskripsigamebaru.setFont(new Font("Tahoma", Font.BOLD, 17));
+        jldeskripsigamebaru.setText("ABOUT THE GAME");
+        jldeskripsigamebaru.setBounds(20, 171, 226, 32);
+        jldeskripsigamebaru.setFont(new Font("Bebas Neue Bold", Font.BOLD, 28));
         paneladdnew.add(jldeskripsigamebaru);
-        jtjudulgamebaru.setBounds(95, 16, 141, 20);
+        jtjudulgamebaru.setBounds(95, 29, 151, 20);
         paneladdnew.add(jtjudulgamebaru);
         jthargagamebaru.setBounds(95, 59, 151, 20);
         paneladdnew.add(jthargagamebaru);
-        jtgenregamebaru.setBounds(95, 90, 151, 20);
+        jtgenregamebaru.setBounds(95, 97, 151, 20);
         paneladdnew.add(jtgenregamebaru);
-        jtstudiogamebaru.setBounds(95, 128, 141, 20);
+        jtstudiogamebaru.setBounds(95, 128, 151, 20);
         paneladdnew.add(jtstudiogamebaru);
-        tadeskripsigamebaru.setBounds(126, 187, 382, 357);
+        tadeskripsigamebaru.setBounds(20, 209, 440, 357);
         paneladdnew.add(tadeskripsigamebaru);
-        jljudulgamebaru.setFont(new Font("Tahoma", Font.BOLD, 17));
+        jljudulgamebaru.setFont(new Font("Lato Black", Font.BOLD, 17));
         jljudulgamebaru.setText("JUDUL");
-        jljudulgamebaru.setBounds(10, 11, 127, 32);
+        jljudulgamebaru.setBounds(10, 17, 127, 45);
         paneladdnew.add(jljudulgamebaru);
-        panelpayment.setBounds(197, 0, 520, 592);
+        panelpayment.setBounds(197, 0, 533, 602);
         framekonten.getContentPane().add(panelpayment);
         panelpayment.setLayout(null);
         
@@ -396,10 +401,26 @@ public class View extends JFrame {
         //Panel Payment
         
         panelpayment.add(jtgamedetails);
+        jlnamagame.setForeground(new Color(211, 211, 211));
+        jlnamagame.setFont(new Font("Lato Black", Font.PLAIN, 45));
+        jlnamagame.setText("Nama game");
+        jlnamagame.setBounds(22, 34, 288, 60);
         panelpayment.add(jlnamagame);
+        jlhargagame.setText("Harga Game");
+        jlhargagame.setFont(new Font("Lato Black", Font.PLAIN, 17));
+        jlhargagame.setBounds(22, 137, 132, 31);
         panelpayment.add(jlhargagame);
+        jlgenregame.setText("Genre Game");
+        jlgenregame.setFont(new Font("Lato Black", Font.PLAIN, 17));
+        jlgenregame.setBounds(22, 102, 132, 25);
         panelpayment.add(jlgenregame);
+        jbbuygame.setFont(new Font("Lato", Font.PLAIN, 13));
+        jbbuygame.setText("Buy Game");
+        jbbuygame.setBounds(22, 254, 146, 39);
         panelpayment.add(jbbuygame);
+        jbaddwish.setText("Add to wishlist");
+        jbaddwish.setFont(new Font("Lato", Font.PLAIN, 13));
+        jbaddwish.setBounds(280, 254, 146, 39);
         panelpayment.add(jbaddwish);
 	    
 	}
