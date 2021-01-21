@@ -204,9 +204,14 @@ public class Control {
                     String dataterpilih = view.tabel.getValueAt(baris, 0).toString();
                 	public void actionPerformed(ActionEvent e) {
              
-            			String dataGame[][] = model.readGame();
-                        //Nah, disini masukin array dataGame kedalam jlabel dkk. Tapi sebelum itu, harus
-            			//nunggu altra dengan front end.
+            			String dataGame[][] = model.readGameDetail(dataterpilih);
+            			view.jlnamagame.setText(dataGame[0][0]);
+            			view.jlhargagame.setText(dataGame[0][1]);
+            			view.jlgenregame.setText(dataGame[0][2]);
+            			view.jlstudiogame.setText(dataGame[0][3]);
+            			view.jldeskripsigamebaru.setText(dataGame[0][4]);
+                        view.panelpayment.setVisible(true);
+                        
                         
                 	}
                 });

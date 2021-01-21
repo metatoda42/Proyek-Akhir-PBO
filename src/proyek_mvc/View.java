@@ -422,7 +422,7 @@ public class View extends JFrame {
         jbaddwish.setFont(new Font("Lato", Font.PLAIN, 13));
         jbaddwish.setBounds(280, 254, 146, 39);
         panelpayment.add(jbaddwish);
-	    
+
 	}
 	
 	//GETTERS

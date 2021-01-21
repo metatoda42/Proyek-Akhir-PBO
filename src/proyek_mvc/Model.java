@@ -199,13 +199,13 @@ public class Model {
     	}
     }
     
-    public String[][] readGameDetail(){
+    public String[][] readGameDetail(String pilih){
     	try {
     		int jmlData = 0;
             
             String data[][] = new String[getBanyakgame()][5];
             
-            String query = "Select * from game"; 
+            String query = "Select * from game WHERE judul='"+pilih+"'"; 
             ResultSet resultSet = statement.executeQuery(query);
             while (resultSet.next()){
                 data[jmlData][0] = resultSet.getString("judul"); //harus sesuai nama kolom di mysql
