@@ -111,7 +111,8 @@ public class Control {
         		view.jlnamaprofil.setText(dataUser[0][2]);
         		view.jlemailprofil.setText(dataUser[0][3]);
         		view.jtabout.setText(dataUser[0][4]);
-        		
+        		String dataGame[][] = model.readGameList(view.getUser());
+                view.tabelgame.setModel(new JTable(dataGame, view.namaKolom2).getModel());
                 
         		
         	}
@@ -127,6 +128,7 @@ public class Control {
         
         view.jbexplorehome.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
+        		mastervariable=0;
         		view.panelexplore.setVisible(true);
         		view.panelhome.setVisible(false);
         		view.panelsidebar.setVisible(true);
@@ -161,9 +163,8 @@ public class Control {
         		view.jlnamaprofil.setText(dataUser[0][2]);
         		view.jlemailprofil.setText(dataUser[0][3]);
         		view.jtabout.setText(dataUser[0][4]);
-        		
-                
-        		
+        		String dataGame[][] = model.readGameList(view.getUser());
+                view.tabelgame.setModel(new JTable(dataGame, view.namaKolom2).getModel());
         	}
         });
         
@@ -180,6 +181,7 @@ public class Control {
         
         view.jbexplore.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
+        		mastervariable=0;
         		view.panelprofil.setVisible(false);
         		view.panelhome.setVisible(false);
         		view.panelsidebar.setVisible(true);
@@ -203,16 +205,18 @@ public class Control {
                 	int baris = view.tabel.getSelectedRow();
                     String dataterpilih = view.tabel.getValueAt(baris, 0).toString();
                 	public void actionPerformed(ActionEvent e) {
-             
-            			String dataGame[][] = model.readGameDetail(dataterpilih);
-            			view.jlnamagame.setText(dataGame[0][0]);
-            			view.jlhargagame.setText(dataGame[0][1]);
-            			view.jlgenregame.setText(dataGame[0][2]);
-            			view.jlstudiogame.setText(dataGame[0][3]);
-            			view.jldeskripsigamebaru.setText(dataGame[0][4]);
-                        view.panelpayment.setVisible(true);
-                        
-                        
+                		if(mastervariable==0) {
+                			String dataGame[][] = model.readGameDetail(dataterpilih);
+                			view.jlnamagame.setText(dataGame[0][0]);
+                			view.jlhargagame.setText(dataGame[0][1]);
+                			view.jlgenregame.setText(dataGame[0][2]);
+                			view.jlstudiogame.setText(dataGame[0][3]);
+                			view.jtgamedetails.setText(dataGame[0][4]);
+                			view.panelexplore.setVisible(false);
+                            view.panelpayment.setVisible(true);
+                            mastervariable++;
+                		}
+            			
                 	}
                 });
                
@@ -240,6 +244,9 @@ public class Control {
         //PAYMENT
         view.jbbuygame.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
+        		String username=view.getUser();
+        		String judul = view.jlnamagame.getText();
+        		model.addpayment(username, judul);
         		
         		
         	}
@@ -247,7 +254,9 @@ public class Control {
         
         view.jbaddwish.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
-        		
+        		String username=view.getUser();
+        		String judul = view.jlnamagame.getText();
+        		model.addwishlist(username, judul);
         		
         	}
         });
@@ -265,11 +274,11 @@ public class Control {
         			if(dataGame[i][0].equals(view.getJudulGame())) {
         				valid=false;
         			}
-        			System.out.print(dataGame[i][0]+" "+view.getUser());
+        			System.out.print(dataGame[i][0]+" "+view.getJudulGame());
         			
         		}
-        		if(view.getUserbaru().equals("")||view.getJtpasswordbaru().equals(""))JOptionPane.showMessageDialog(null, "Field Empty");
-        		else if(valid==false) JOptionPane.showMessageDialog(null, "Username Taken");
+        		if(view.getJudulGame().equals("")||view.getGenreGame().equals(""))JOptionPane.showMessageDialog(null, "Field Empty");
+        		else if(valid==false) JOptionPane.showMessageDialog(null, "Title Taken");
         		else model.addgame(judul, 0, genre, studio, description);
         	}
         });

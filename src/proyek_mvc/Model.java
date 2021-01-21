@@ -71,7 +71,7 @@ public class Model {
     public void addgame(String judul, int harga, String genre, String studio, String description){
     	int jmlData=0;
         try {
-        	String query = "Select * from game WHERE judul=" + judul; 
+        	String query = "Select * from game WHERE judul='" + judul+"'"; 
             
             ResultSet resultSet = statement.executeQuery(query);
             
@@ -79,8 +79,8 @@ public class Model {
                  jmlData++;
              }
             if (jmlData==0) {
-            query = "INSERT INTO game(judul, harga, genre, studio, description) VALUES ('"+judul+"','"+harga+"','"+genre+"','"+studio+"','"+description+")";
-       
+            query = "INSERT INTO game(judul, harga, genre, studio, description) VALUES ('"+judul+"',"+harga+",'"+genre+"','"+studio+"','"+description+"')";
+            System.out.println(query);
             statement = (Statement) koneksi.createStatement();
             statement.executeUpdate(query); //execute querynya
             System.out.println("Berhasil ditambahkan");
@@ -98,7 +98,7 @@ public class Model {
     
     public void addwishlist(String user, String judul) {
     	try {
-            String query = "INSERT INTO `wishlist` (`username`, `judul`) VALUES ('"+user+"','"+judul+")";
+            String query = "INSERT INTO `wishlist` (`username`, `judul`) VALUES ('"+user+"','"+judul+"')";
        
             statement = (Statement) koneksi.createStatement();
             statement.executeUpdate(query); //execute querynya
@@ -113,7 +113,7 @@ public class Model {
     
     public void addpayment(String user, String judul) {
     	try {
-            String query = "INSERT INTO `payment` (`username`, `judul`) VALUES ('"+user+"','"+judul+")";
+            String query = "INSERT INTO `payment` (`username`, `judul`) VALUES ('"+user+"','"+judul+"')";
        
             statement = (Statement) koneksi.createStatement();
             statement.executeUpdate(query); //execute querynya
@@ -199,13 +199,13 @@ public class Model {
     	}
     }
     
-    public String[][] readGameDetail(String pilih){
+    public String[][] readGameList(String pilih){////DISINI BELUM SELESAI!!!
     	try {
     		int jmlData = 0;
             
             String data[][] = new String[getBanyakgame()][5];
-            
-            String query = "Select * from game WHERE judul='"+pilih+"'"; 
+            System.out.println(pilih);
+            String query = "Select * from game, payment WHERE payment.username='"+pilih+"' and payment.judul = game.judul"; 
             ResultSet resultSet = statement.executeQuery(query);
             while (resultSet.next()){
                 data[jmlData][0] = resultSet.getString("judul"); //harus sesuai nama kolom di mysql
@@ -224,6 +224,53 @@ public class Model {
     }
     
     
+    public String[][] readGameDetail(String pilih){
+    	try {
+    		int jmlData = 0;
+            
+            String data[][] = new String[getBanyakgame()][5];
+            System.out.println(pilih);
+            String query = "Select * from game WHERE judul='"+pilih+"'"; 
+            ResultSet resultSet = statement.executeQuery(query);
+            while (resultSet.next()){
+                data[jmlData][0] = resultSet.getString("judul"); //harus sesuai nama kolom di mysql
+                data[jmlData][1] = resultSet.getString("harga");             
+                data[jmlData][2] = resultSet.getString("genre");
+                data[jmlData][3] = resultSet.getString("studio");
+                data[jmlData][4] = resultSet.getString("description");
+                jmlData++;
+            }return data;
+    	}
+    	catch(SQLException e){
+    		System.out.println(e.getMessage());
+            System.out.println("SQL Error");
+            return null;
+    	}
+    }
+    
+    public String[][] readGameWish(String pilih){
+    	try {
+    		int jmlData = 0;
+            
+            String data[][] = new String[getBanyakgame()][5];
+            System.out.println(pilih);
+            String query = "Select * from game, wishlist WHERE wishlist.username='"+pilih+"' and wishlist.judul = game.judul"; 
+            ResultSet resultSet = statement.executeQuery(query);
+            while (resultSet.next()){
+                data[jmlData][0] = resultSet.getString("judul"); //harus sesuai nama kolom di mysql
+                data[jmlData][1] = resultSet.getString("harga");             
+                data[jmlData][2] = resultSet.getString("genre");
+                data[jmlData][3] = resultSet.getString("studio");
+                data[jmlData][4] = resultSet.getString("description");
+                jmlData++;
+            }return data;
+    	}
+    	catch(SQLException e){
+    		System.out.println(e.getMessage());
+            System.out.println("SQL Error");
+            return null;
+    	}
+    }
     
     
     //UPDATE UPDATE UPDATE UPDATE UPDATE UPDATE UPDATE UPDATE

@@ -147,8 +147,8 @@ public class View extends JFrame {
 	    //THE TITLE/LOGIN FRAME
 	    
 	    
-	    //framelogin.getContentPane().add(panellogin);// (Jadikan Komen untuk Edit yang Lain)
-	    //framelogin.getContentPane().add(panelsignin);
+	    framelogin.getContentPane().add(panellogin);// (Jadikan Komen untuk Edit yang Lain)
+	    framelogin.getContentPane().add(panelsignin);
 	    
 	    //Panel Login
 	    panellogin.setLayout(null);
@@ -216,18 +216,18 @@ public class View extends JFrame {
 	    
 	    //THE CONTENT FRAME
 	    //ON OFF ON OFF ON OFF ON OFF ON OFF ON OFF
-	    //framekonten.getContentPane().add(panelexplore);//Jadikan komen kalo mau edit yang satunya
+	    framekonten.getContentPane().add(panelexplore);//Jadikan komen kalo mau edit yang satunya
 	    framekonten.getContentPane().add(panelsidebar);
 	    panelprofil.setBackground(new Color(0, 102, 153));
 	    panelprofil.setBounds(197, 0, 546, 592);
-	    //framekonten.getContentPane().add(panelprofil);
+	    framekonten.getContentPane().add(panelprofil);
 	    panelhome.setBackground(new Color(0, 102, 153));
 	    panelhome.setBounds(0, 0, 730, 602);
 	    paneladdnew.setBackground(new Color(0, 102, 153));
 	    paneladdnew.setBounds(210, 0, 518, 602);
 	    panelpayment.setBackground(new Color(0, 102, 153));
-	    //framekonten.getContentPane().add(paneladdnew);
-	    //framekonten.getContentPane().add(panelhome);
+	    framekonten.getContentPane().add(paneladdnew);
+	    framekonten.getContentPane().add(panelhome);
 	    framekonten.getContentPane().add(panelpayment);
 
 	    panelexplore.setLayout(null);
@@ -397,6 +397,10 @@ public class View extends JFrame {
         panelpayment.setLayout(null);
         jtgamedetails.setFont(new Font("Lato", Font.PLAIN, 13));
         jtgamedetails.setBounds(21, 199, 404, 108);
+        jbnewgame.setFont(new Font("Tahoma", Font.BOLD, 13));
+        jbnewgame.setText("SAVE");
+        jbnewgame.setBounds(323, 171, 102, 32);
+        paneladdnew.add(jbnewgame);
         
         
         
