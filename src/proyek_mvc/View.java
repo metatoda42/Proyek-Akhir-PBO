@@ -396,7 +396,7 @@ public class View extends JFrame {
         framekonten.getContentPane().add(panelpayment);
         panelpayment.setLayout(null);
         jtgamedetails.setFont(new Font("Lato", Font.PLAIN, 13));
-        jtgamedetails.setBounds(22, 177, 404, 108);
+        jtgamedetails.setBounds(21, 199, 404, 108);
         
         
         
@@ -410,19 +410,23 @@ public class View extends JFrame {
         panelpayment.add(jlnamagame);
         jlhargagame.setText("Harga Game");
         jlhargagame.setFont(new Font("Lato Black", Font.PLAIN, 17));
-        jlhargagame.setBounds(22, 137, 132, 31);
+        jlhargagame.setBounds(21, 122, 132, 31);
         panelpayment.add(jlhargagame);
         jlgenregame.setText("Genre Game");
         jlgenregame.setFont(new Font("Lato Black", Font.PLAIN, 17));
-        jlgenregame.setBounds(22, 102, 132, 25);
+        jlgenregame.setBounds(21, 99, 132, 25);
         panelpayment.add(jlgenregame);
+        jlstudiogame.setFont(new Font("Lato Black", Font.PLAIN, 17));
+        jlstudiogame.setText("Studio Game");
+        jlstudiogame.setBounds(21, 150, 146, 25);
+        panelpayment.add(jlstudiogame);
         jbbuygame.setFont(new Font("Lato", Font.PLAIN, 13));
         jbbuygame.setText("Buy Game");
-        jbbuygame.setBounds(22, 306, 146, 39);
+        jbbuygame.setBounds(22, 354, 146, 39);
         panelpayment.add(jbbuygame);
         jbaddwish.setText("Add to wishlist");
         jbaddwish.setFont(new Font("Lato", Font.PLAIN, 13));
-        jbaddwish.setBounds(280, 306, 146, 39);
+        jbaddwish.setBounds(279, 354, 146, 39);
         panelpayment.add(jbaddwish);
 	    
 	}
