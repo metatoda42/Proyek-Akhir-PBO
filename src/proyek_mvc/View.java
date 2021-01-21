@@ -147,8 +147,8 @@ public class View extends JFrame {
 	    //THE TITLE/LOGIN FRAME
 	    
 	    
-	    framelogin.getContentPane().add(panellogin);// (Jadikan Komen untuk Edit yang Lain)
-	    framelogin.getContentPane().add(panelsignin);
+	    //framelogin.getContentPane().add(panellogin);// (Jadikan Komen untuk Edit yang Lain)
+	    //framelogin.getContentPane().add(panelsignin);
 	    
 	    //Panel Login
 	    panellogin.setLayout(null);
@@ -216,18 +216,18 @@ public class View extends JFrame {
 	    
 	    //THE CONTENT FRAME
 	    //ON OFF ON OFF ON OFF ON OFF ON OFF ON OFF
-	    framekonten.getContentPane().add(panelexplore);//Jadikan komen kalo mau edit yang satunya
+	    //framekonten.getContentPane().add(panelexplore);//Jadikan komen kalo mau edit yang satunya
 	    framekonten.getContentPane().add(panelsidebar);
 	    panelprofil.setBackground(new Color(0, 102, 153));
 	    panelprofil.setBounds(197, 0, 546, 592);
-	    framekonten.getContentPane().add(panelprofil);
+	    //framekonten.getContentPane().add(panelprofil);
 	    panelhome.setBackground(new Color(0, 102, 153));
 	    panelhome.setBounds(0, 0, 730, 602);
 	    paneladdnew.setBackground(new Color(0, 102, 153));
 	    paneladdnew.setBounds(210, 0, 518, 602);
 	    panelpayment.setBackground(new Color(0, 102, 153));
-	    framekonten.getContentPane().add(paneladdnew);
-	    framekonten.getContentPane().add(panelhome);
+	    //framekonten.getContentPane().add(paneladdnew);
+	    //framekonten.getContentPane().add(panelhome);
 	    framekonten.getContentPane().add(panelpayment);
 
 	    panelexplore.setLayout(null);
@@ -395,6 +395,8 @@ public class View extends JFrame {
         panelpayment.setBounds(197, 0, 533, 602);
         framekonten.getContentPane().add(panelpayment);
         panelpayment.setLayout(null);
+        jtgamedetails.setFont(new Font("Lato", Font.PLAIN, 13));
+        jtgamedetails.setBounds(22, 177, 404, 108);
         
         
         
@@ -416,13 +418,13 @@ public class View extends JFrame {
         panelpayment.add(jlgenregame);
         jbbuygame.setFont(new Font("Lato", Font.PLAIN, 13));
         jbbuygame.setText("Buy Game");
-        jbbuygame.setBounds(22, 254, 146, 39);
+        jbbuygame.setBounds(22, 306, 146, 39);
         panelpayment.add(jbbuygame);
         jbaddwish.setText("Add to wishlist");
         jbaddwish.setFont(new Font("Lato", Font.PLAIN, 13));
-        jbaddwish.setBounds(280, 254, 146, 39);
+        jbaddwish.setBounds(280, 306, 146, 39);
         panelpayment.add(jbaddwish);
-
+	    
 	}
 	
 	//GETTERS
